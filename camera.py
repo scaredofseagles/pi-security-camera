@@ -6,7 +6,8 @@ camera = PiCamera()
 
 date = datetime.datetime.now()
 
-camera.start_preview()
-sleep(5)
-camera.capture(f'/home/pi/Desktop/Projects/pi-security-camera/public/images/{date}.jpg')
-camera.stop_preview()
+def runCamera ():
+	camera.start_preview()
+	sleep(5)
+	camera.capture(f'/home/pi/Desktop/Projects/pi-security-camera/public/images/{date}.jpg')
+	camera.stop_preview()
