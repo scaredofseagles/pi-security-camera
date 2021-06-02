@@ -1,7 +1,6 @@
 const socket = io();
 
 socket.on('images', data => {
-    // TODO: need to wipe div to avoid duplicates
 
     if (Array.from(document.getElementsByClassName("image-box")).length) {
         setTimeout(async () => {
@@ -10,6 +9,8 @@ socket.on('images', data => {
         })
     } else addBoxes(data);
 })
+
+document.getElementById('pictureBtn').addEventListener("click", () => socket.emit('take-picture'))
 
 const clearBoxes = () => {
     let imagesList = Array.from(document.getElementsByClassName("image-box"));
@@ -39,6 +40,7 @@ const addBoxes = data => {
 
         node.addEventListener('click', e => handleOpenModal(e))
     })
+    // TODO: once boxes are loaded, reload
 }
 
 const handleOpenModal = event => {

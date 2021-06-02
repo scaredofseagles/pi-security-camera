@@ -79,3 +79,21 @@
     max-height: 800px;
     max-width: 600px;
 }
+
+#pictureBtn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    background-color: #3399ff;
+    color: white;
+    border: 1px solid #0059b3;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 12pt;
+}
+
+#pictureBtn:hover {
+    background-color: #0073e6;
+    text-decoration: none;
+    cursor: pointer;
+}

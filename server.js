@@ -11,7 +11,7 @@ const io = require("socket.io")(server, {
   },
 });
 
-const { exec } = require('child_process');
+const { exec, spawn } = require('child_process');
 const fs = require("fs");
 
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +28,7 @@ io.on('connection', async socket => {
 
         //TODO: remove whitespaces before sending
 
-        socket.emit('images', data.split("\n"));
+        setTimeout(() => socket.emit('images', data.split("\n")), 1500);
     }
 
     if (socket.connected) readFiles();
@@ -40,6 +40,10 @@ io.on('connection', async socket => {
         if (filename) {
             readFiles();
         }
+    })
+
+    socket.on('take-picture', () => {
+        spawn('python', ['camera.py']);
     })
 })
 
