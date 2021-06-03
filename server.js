@@ -33,16 +33,16 @@ io.on('connection', async socket => {
 
     if (socket.connected) readFiles();
 
-    
-
     fs.watch("./public/images", (eventType, filename) => {
         console.log(`Changes made to images folder: type=${eventType}. Rendering ...`);
         if (filename) {
             readFiles();
         }
     })
+    
+   
 
-    socket.on('take-picture', () => {
+    socket.on('picture', (data) => {
         spawn('python', ['camera.py']);
     })
 })

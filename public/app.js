@@ -10,7 +10,8 @@ socket.on('images', data => {
     } else addBoxes(data);
 })
 
-document.getElementById('pictureBtn').addEventListener("click", () => socket.emit('take-picture'))
+document.getElementById('pictureBtn').addEventListener("click", () => socket.emit('picture', 'indo'));
+
 
 const clearBoxes = () => {
     let imagesList = Array.from(document.getElementsByClassName("image-box"));
@@ -44,7 +45,6 @@ const addBoxes = data => {
 }
 
 const handleOpenModal = event => {
-    console.log('click event', event)
 
     let modal = document.createElement("div");
     modal.setAttribute("class", "modal");
